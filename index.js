@@ -19,7 +19,43 @@ function isArray(val) {
 function trim(str) {
   return str.replace(/^\s*/, '').replace(/\s*$/, '');
 }
+
+/**
+ * 获取url参数值
+ *
+ * @param {String}   参数key
+ * @returns {String} 返回值value
+ * example url: https://www.leinov.com/?from=github
+ * use getQueryString(from)
+ * return github
+ */
+
+function getQueryString(name){
+	let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+ 	let r = window.location.search.substr(1).match(reg);
+ 	if (r != null) return unescape(r[2]);
+ 	return null;
+}
+
+/**
+ * 是否为空对象
+ *
+ * @param {Obj}   参数为对象
+ * @returns {boolean} 返回值为布尔值
+ */
+
+function isObjEmpty(obj){
+	for(let name in obj){
+	   if(obj.hasOwnProperty(name)){
+	     return false;
+	   }
+	}
+	return true;
+}
+
 module.exports = {
   isArray: isArray,
-  trim:trim
+  trim:trim,
+  getQueryString:getQueryString,
+  isObjEmpty:isObjEmpty
 };
