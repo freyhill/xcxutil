@@ -6,11 +6,21 @@ let toString = Object.prototype.toString;
 /**
  * [判断一个值是否为数组]
  *
- * @param {Object} val 测试的值
+ * @param {Array} val 测试的值
  * @returns {boolean} 如果是数组返回true，如果非数组返回false
  */
 function isArray(val) {
-  return toString.call(val) === '[object Array]';
+  return toString.call(val) === "[object Array]";
+}
+
+/**
+ * [判断一个值是否为对象]
+ *
+ * @param {Object} val 测试的值
+ * @returns {boolean} 如果是对象返回true，如果非对象返回false
+ */
+function isObject(val) {
+  return toString.call(val) === "[object Object]";
 }
 
 /**
@@ -158,9 +168,47 @@ function modal(text, title = '提示') {
      });
    })
  }
+ /**
+  * [保存本地数据]
+  * @param {key} // 保存的key
+  * @param {value} //保存的value
+  */
+  function setStorage(key,value) {
+    return new Promise((resolve,reject)=>{
+      wx.setStorage({
+        key:key,
+        data:value,
+        success:()=>{
+          resolve();
+        },
+        fail:(err)=>{
+          reject(err);
+        }
+      })
+    })
+  }
 
+  /**
+   * [获取本地存储]
+   * @param {key} // 保存的key
+   *
+   */
+   function getStorage(key) {
+     return new Promise((resolve,reject)=>{
+       wx.getStorage({
+         key:key,
+         success:(res)=>{
+           resolve(res.data)
+         },
+         fail:()=>{
+           reject()
+         }
+       })
+     })
+   }
 module.exports = {
   isArray: isArray,
+  isObject:isObject,
   trim:trim,
   getQueryString:getQueryString,
   isObjEmpty:isObjEmpty,
@@ -168,5 +216,7 @@ module.exports = {
   interArray:interArray,
   nowDate:nowDate,
   modal:modal,
-  toast:toast
+  toast:toast,
+  setStorage:setStorage,
+  getStorage:getStorage
 };
