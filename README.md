@@ -1,8 +1,8 @@
 > xcxutil 是一个用于小程序开发使用的公共函数库，包括一些常用函数，弹框提示等功能，极大提高开发效率
 
 
-* 📦 <1kb
-* 👀 clean function
+* 📦 small
+* 👀 clean
 * 🐅 strong
 
 ---
@@ -12,7 +12,7 @@
 ```
 npm install xcxutil
 ```
-#### use
+#### use  
 ```
 let xcxutil = require("xcxutil");
 
