@@ -1,5 +1,10 @@
+/*
+ *
+ */
+
 'use strict';
-var toString = Object.prototype.toString;
+
+let toString = Object.prototype.toString;
 
 /**
  * [判断一个值是否为数组]
@@ -10,6 +15,7 @@ var toString = Object.prototype.toString;
 function isArray(val) {
   return toString.call(val) === '[object Array]';
 }
+
 /**
  * [去掉空格]
  *
@@ -29,7 +35,6 @@ function trim(str) {
  * use getQueryString(from)
  * return github
  */
-
 function getQueryString(name){
 	let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
  	let r = window.location.search.substr(1).match(reg);
@@ -43,7 +48,6 @@ function getQueryString(name){
  * @param {Obj}   参数为对象
  * @returns {boolean} 返回值为布尔值
  */
-
 function isObjEmpty(obj){
 	for(let name in obj){
 	   if(obj.hasOwnProperty(name)){
@@ -68,22 +72,23 @@ function isPhone(phone) {
 }
 
 /**
-   * [获取两个数组的交集]
-   *
-   * @param {Array} //[1,2,3,4,5,8,9]
-   * @param {Array} //[1,11,9]
-   * @returns {Array} // [1,9]
-   */
-  function interArray(arr1, arr2, key) {
-    let commonarr = arr1.filter((x) => {
-      if(key) {
-        return arr2.includes(x[key])
-      } else {
-        return arr2.includes(x)
-      }
-    })
-    return commonarr;
-  }
+ * [获取两个数组的交集]
+ *
+ * @param {Array} //[1,2,3,4,5,8,9]
+ * @param {Array} //[1,11,9]
+ * @returns {Array} // [1,9]
+ */
+function interArray(arr1, arr2, key) {
+  let commonarr = arr1.filter((x) => {
+    if(key) {
+      return arr2.includes(x[key])
+    } else {
+      return arr2.includes(x)
+    }
+  })
+  return commonarr;
+}
+
 /**
  * [获取当前的日期]
  *
@@ -99,11 +104,11 @@ function nowDate(type = '-') {
 }
 
 /**
-   * [补0]
-   *
-   * @param {Number} //8
-   * @returns {String} // 08
-   */
+ * [补0]
+ *
+ * @param {Number} //8
+ * @returns {String} // 08
+ */
 function datePlus0(x) {
   if(x < 10) {
     return `0${x}`;
@@ -111,8 +116,10 @@ function datePlus0(x) {
     return x
   }
 }
+
 /**
  * [弹出确认窗口]
+ *
  * @param {text} //8
  * @param {title} // 08
  */
@@ -134,6 +141,7 @@ function modal(text, title = '提示') {
 
 /**
  * [提示弹层]
+ *
  * @param {title} // 显示内容
  * @param {duration} // 显示时间
  * @param {icon} // 图标
