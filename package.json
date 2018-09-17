@@ -1,6 +1,6 @@
 {
   "name": "xcxutil",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "description": "",
   "main": "index.js",
   "repository": {
@@ -14,5 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0"
-  }
+  },
+  "keywords": [
+    "xcx",
+    "util",
+    "xcxutil",
+    "小程序",
+    "微信小程序",
+    "wepy"
+  ]
 }
