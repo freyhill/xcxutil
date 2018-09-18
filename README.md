@@ -19,7 +19,7 @@ let xcxutil = require("xcxutil");
 xcxutil.isArray([1,2,3]); //true
 
 xcxutil.toast("这是一个提示").then(()=>{  
-  //小时候回到首页
+  //消失后回到首页
 })
 ```
 #### api
