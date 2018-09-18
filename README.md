@@ -36,3 +36,6 @@ modal| 弹出框|```xcxutil.modal("这是一个提示") ```
 toast| 弹出层|```toast("这是一个提示").then(()=>{console.log("回首页")})```
 setStorage|存储localStorage| ```xcxutil.setStorage("token","abs")```
 getStorage|获取localStorage|```xcxutil.getStorage("token").then((data)=>{//use data})```
+
+
+* 👀 持续更新 欢迎fork & star
