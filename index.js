@@ -36,7 +36,7 @@ function trim(str) {
 /**
  * [获取url参数值]
  *
- * @param {String}   参数key
+ * @param {String} name  参数key
  * @returns {String} 返回值value
  * example url: https://www.leinov.com/?from=github
  * use getQueryString(from)
@@ -52,7 +52,7 @@ function getQueryString(name){
 /**
  * [是否为空对象]
  *
- * @param {Obj}   参数为对象
+ * @param {Obj} obj 参数为对象
  * @returns {boolean} 返回值为布尔值
  */
 function isObjEmpty(obj){
@@ -67,7 +67,7 @@ function isObjEmpty(obj){
 /**
  * [检查是否为电话号码]
  *
- * @param {Number} //8
+ * @param {Number} phone //8
  * @returns {Boolean} // true
  */
 function isPhone(phone) {
@@ -81,9 +81,9 @@ function isPhone(phone) {
 /**
  * [获取两个数组的交集]
  *
- * @param {Array} //[1,2,3,4,5,8,9]
- * @param {Array} //[1,11,9]
- * @returns {Array} // [1,9]
+ * @param {Array} arr1 //[1,2,3,4,5,8,9]
+ * @param {Array} arr2 //[1,11,9]
+ * @returns {Array} key // [1,9]
  */
 function interArray(arr1, arr2, key) {
   let commonarr = arr1.filter((x) => {
@@ -99,7 +99,7 @@ function interArray(arr1, arr2, key) {
 /**
  * [获取当前的日期]
  *
- * @param {string} '-'
+ * @param {string} type '-'
  * @returns {string}  '2018-09-16'
  */
 function nowDate(type = '-') {
@@ -113,7 +113,7 @@ function nowDate(type = '-') {
 /**
  * [补0]
  *
- * @param {Number} //8
+ * @param {Number} x //8
  * @returns {String} // 08
  */
 function datePlus0(x) {
@@ -127,8 +127,8 @@ function datePlus0(x) {
 /**
  * [弹出确认窗口]
  *
- * @param {text} //8
- * @param {title} // 08
+ * @param {String} text //8
+ * @param {String} title // 08
  */
 function modal(text, title = '提示') {
   return new Promise((resolve, reject) => {
@@ -149,11 +149,11 @@ function modal(text, title = '提示') {
 /**
  * [提示弹层]
  *
- * @param {title} // 显示内容
- * @param {duration} // 显示时间
- * @param {icon} // 图标
+ * @param {String} title  显示内容
+ * @param {Number} duration 显示时间
+ * @param {String} icon  图标
  */
- function toast(title, duration=3000, icon = 'success') {
+ function toast(title, duration=2000, icon = 'success') {
    return new Promise((resolve,reject)=>{
      wx.showToast({
        title: title,
@@ -168,44 +168,77 @@ function modal(text, title = '提示') {
      });
    })
  }
- /**
-  * [保存本地数据]
-  * @param {key} // 保存的key
-  * @param {value} //保存的value
-  */
-  function setStorage(key,value) {
-    return new Promise((resolve,reject)=>{
-      wx.setStorage({
-        key:key,
-        data:value,
-        success:()=>{
-          resolve();
-        },
-        fail:(err)=>{
-          reject(err);
-        }
-      })
-    })
-  }
 
-  /**
-   * [获取本地存储]
-   * @param {key} // 保存的key
-   *
-   */
-   function getStorage(key) {
-     return new Promise((resolve,reject)=>{
-       wx.getStorage({
-         key:key,
-         success:(res)=>{
-           resolve(res.data)
-         },
-         fail:()=>{
-           reject()
+/**
+* [保存本地数据]
+*
+* @param {String} key 保存的key
+* @param {String} value 保存的value
+*/
+function setStorage(key,value) {
+  return new Promise((resolve,reject)=>{
+    wx.setStorage({
+      key:key,
+      data:value,
+      success:()=>{
+        resolve();
+      },
+      fail:(err)=>{
+        reject(err);
+      }
+    })
+  })
+}
+
+/**
+ * [获取本地存储]
+ *
+ * @param {String} key 保存的key
+ */
+ function getStorage(key) {
+   return new Promise((resolve,reject)=>{
+     wx.getStorage({
+       key:key,
+       success:(res)=>{
+         resolve(res.data)
+       },
+       fail:()=>{
+         reject()
+       }
+     })
+   })
+ }
+
+/**
+ * [打电话]
+ *
+ * @param {String} phoneNumber 电话号码
+ */
+function phoneCall(phoneNumber) {
+  wx.makePhoneCall({
+     phoneNumber: phoneNumber
+   })
+}
+
+/**
+ * [复制]
+ *
+ * @param {String} data 复制的内容
+ * @param {String} tip 提示信息
+ */
+ function copy(data,tip){
+   wx.setClipboardData({
+     data: data,
+     success: function(res) {
+       wx.getClipboardData({
+         success: function(res) {
+           toast(tip)
          }
        })
-     })
-   }
+     }
+   })
+ }
+
 module.exports = {
   isArray: isArray,
   isObject:isObject,
@@ -218,5 +251,7 @@ module.exports = {
   modal:modal,
   toast:toast,
   setStorage:setStorage,
-  getStorage:getStorage
+  getStorage:getStorage,
+  phoneCall:phoneCall,
+  copy:copy
 };
