@@ -38,4 +38,4 @@ setStorage|存储localStorage| ```xcxutil.setStorage("token","abs")```
 getStorage|获取localStorage|```xcxutil.getStorage("token").then((data)=>{//use data})```
 
 
-* 👀 持续更新 欢迎fork & star
+* 👀 持续更新 欢迎[fork & star](https://github.com/leinov/xcxutil)
