@@ -1,7 +1,7 @@
 {
   "name": "xcxutil",
-  "version": "1.1.1",
-  "description": "",
+  "version": "1.1.2",
+  "description": "xcxutil是一个小程序函数库，封装了一些高频使用方法",
   "main": "index.js",
   "repository": {
     "type": "git",
