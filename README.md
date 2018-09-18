@@ -18,9 +18,8 @@ let xcxutil = require("xcxutil");
 
 xcxutil.isArray([1,2,3]); //true
 
-xcxutil.toast("这是一个提示").then(()=>{  
-  //消失后回到首页
-})
+xcxutil.copy('这是一段文字','复制成功啦')
+
 ```
 #### api
 
@@ -36,6 +35,6 @@ modal| 弹出框|```xcxutil.modal("这是一个提示") ```
 toast| 弹出层|```toast("这是一个提示").then(()=>{console.log("回首页")})```
 setStorage|存储localStorage| ```xcxutil.setStorage("token","abs")```
 getStorage|获取localStorage|```xcxutil.getStorage("token").then((data)=>{//use data})```
-
-
+phoneCall | 打电话  |```xcxutil.phoneCall('13411111111')```
+copy|复制文本 | ```xcxutil.copy('文本','提示')```
 * 👀 持续更新 欢迎[fork & star](https://github.com/leinov/xcxutil)
