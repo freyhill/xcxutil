@@ -245,7 +245,7 @@ module.exports = {
   trim:trim,
   getQueryString:getQueryString,
   isObjEmpty:isObjEmpty,
-  isPhone:isPhone,
+  isPhoneNum:isPhoneNum,
   interArray:interArray,
   nowDate:nowDate,
   modal:modal,
