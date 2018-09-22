@@ -28,6 +28,7 @@ api | 用途 | 实例
 isArray |  是否为数组 | ```xcxutil.isArray([1,2,4])```
 isObject| 是否为对象| ```xcxutil.isObject({})```
 trim | 去掉空格|```xcxutil.trim(" xx ")```
+isPhoneNum | 校验电话号码  | ```xcxutil.isPhoneNum(phonenum)```
 getQueryString | 获取参数| ```xcxutil.getQueryString("name")```
 isObjEmpty| 检查对象是否为空|```xcxutil.isObjEmpty({}) //true```
 nowDate| 当前时间 | ```xcxutil.nowDate("-") // 2018-09-17```

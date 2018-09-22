@@ -70,9 +70,9 @@ function isObjEmpty(obj){
  * @param {Number} phone //8
  * @returns {Boolean} // true
  */
-function isPhone(phone) {
+function isPhoneNum(phoneNum) {
   const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
-  if(!reg.test(phone)) {
+  if(!reg.test(phoneNum)) {
     return false;
   }
   return true;
