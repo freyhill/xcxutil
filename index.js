@@ -255,7 +255,7 @@ module.exports = {
 	isObject: isObject,
 	trim: trim,
 	isObjEmpty: isObjEmpty,
-	sPhoneNum: isPhoneNum,
+	isPhoneNum: isPhoneNum,
 	interArray: interArray,
 	nowDate: nowDate,
 	modal: modal,
