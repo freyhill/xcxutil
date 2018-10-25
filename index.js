@@ -1,5 +1,4 @@
-
-'use strict';
+"use strict";
 
 let toString = Object.prototype.toString;
 
@@ -10,7 +9,7 @@ let toString = Object.prototype.toString;
  * @returns {boolean} 如果是数组返回true，如果非数组返回false
  */
 function isArray(val) {
-  return toString.call(val) === "[object Array]";
+	return toString.call(val) === "[object Array]";
 }
 
 /**
@@ -20,7 +19,7 @@ function isArray(val) {
  * @returns {boolean} 如果是对象返回true，如果非对象返回false
  */
 function isObject(val) {
-  return toString.call(val) === "[object Object]";
+	return toString.call(val) === "[object Object]";
 }
 
 /**
@@ -30,23 +29,7 @@ function isObject(val) {
  * @returns {String} 去掉空格的字符串
  */
 function trim(str) {
-  return str.replace(/^\s*/, '').replace(/\s*$/, '');
-}
-
-/**
- * [获取url参数值]
- *
- * @param {String} name  参数key
- * @returns {String} 返回值value
- * example url: https://www.leinov.com/?from=github
- * use getQueryString(from)
- * return github
- */
-function getQueryString(name){
-	let reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
- 	let r = window.location.search.substr(1).match(reg);
- 	if (r != null) return unescape(r[2]);
- 	return null;
+	return str.replace(/^\s*/, "").replace(/\s*$/, "");
 }
 
 /**
@@ -57,9 +40,9 @@ function getQueryString(name){
  */
 function isObjEmpty(obj){
 	for(let name in obj){
-	   if(obj.hasOwnProperty(name)){
-	     return false;
-	   }
+		if(obj.hasOwnProperty(name)){
+			return false;
+		}
 	}
 	return true;
 }
@@ -71,11 +54,11 @@ function isObjEmpty(obj){
  * @returns {Boolean} // true
  */
 function isPhoneNum(phoneNum) {
-  const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
-  if(!reg.test(phoneNum)) {
-    return false;
-  }
-  return true;
+	const reg = /^[1][3,4,5,7,8][0-9]{9}$/;
+	if(!reg.test(phoneNum)) {
+		return false;
+	}
+	return true;
 }
 
 /**
@@ -86,14 +69,14 @@ function isPhoneNum(phoneNum) {
  * @returns {Array} key // [1,9]
  */
 function interArray(arr1, arr2, key) {
-  let commonarr = arr1.filter((x) => {
-    if(key) {
-      return arr2.includes(x[key])
-    } else {
-      return arr2.includes(x)
-    }
-  })
-  return commonarr;
+	let commonarr = arr1.filter((x) => {
+		if(key) {
+			return arr2.includes(x[key]);
+		} else {
+			return arr2.includes(x);
+		}
+	});
+	return commonarr;
 }
 
 /**
@@ -102,12 +85,12 @@ function interArray(arr1, arr2, key) {
  * @param {string} type '-'
  * @returns {string}  '2018-09-16'
  */
-function nowDate(type = '-') {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = datePlus0(new Date().getMonth() + 1);
-  const currentDate = datePlus0(new Date().getDate());
-  return `${year}${type}${month}${type}${currentDate}`;
+function nowDate(type = "-") {
+	const date = new Date();
+	const year = date.getFullYear();
+	const month = datePlus0(new Date().getMonth() + 1);
+	const currentDate = datePlus0(new Date().getDate());
+	return `${year}${type}${month}${type}${currentDate}`;
 }
 
 /**
@@ -117,11 +100,11 @@ function nowDate(type = '-') {
  * @returns {String} // 08
  */
 function datePlus0(x) {
-  if(x < 10) {
-    return `0${x}`;
-  } else {
-    return x
-  }
+	if(x < 10) {
+		return `0${x}`;
+	} else {
+		return x;
+	}
 }
 
 /**
@@ -130,20 +113,20 @@ function datePlus0(x) {
  * @param {String} text //8
  * @param {String} title // 08
  */
-function modal(text, title = '提示') {
-  return new Promise((resolve, reject) => {
-    wx.showModal({
-      title: title,
-      content: text,
-      showCancel: false,
-      success: res => {
-        resolve(res);
-      },
-      fail: res => {
-        reject(res);
-      }
-    });
-  });
+function modal(text, title = "提示") {
+	return new Promise((resolve, reject) => {
+		wx.showModal({
+			title: title,
+			content: text,
+			showCancel: false,
+			success: res => {
+				resolve(res);
+			},
+			fail: res => {
+				reject(res);
+			}
+		});
+	});
 }
 
 /**
@@ -153,21 +136,21 @@ function modal(text, title = '提示') {
  * @param {Number} duration 显示时间
  * @param {String} icon  图标
  */
- function toast(title, duration=2000, icon = 'success') {
-   return new Promise((resolve,reject)=>{
-     wx.showToast({
-       title: title,
-       icon: icon,
-       mask: true,
-       duration: duration,
-       success:function(){
-         setTimeout(()=>{
-           resolve();
-         },duration)
-       }
-     });
-   })
- }
+function toast(title, duration=2000, icon = "success") {
+	return new Promise((resolve)=>{
+		wx.showToast({
+			title: title,
+			icon: icon,
+			mask: true,
+			duration: duration,
+			success:function(){
+				setTimeout(()=>{
+					resolve();
+				},duration);
+			}
+		});
+	});
+}
 
 /**
 * [保存本地数据]
@@ -176,18 +159,18 @@ function modal(text, title = '提示') {
 * @param {String} value 保存的value
 */
 function setStorage(key,value) {
-  return new Promise((resolve,reject)=>{
-    wx.setStorage({
-      key:key,
-      data:value,
-      success:()=>{
-        resolve();
-      },
-      fail:(err)=>{
-        reject(err);
-      }
-    })
-  })
+	return new Promise((resolve,reject)=>{
+		wx.setStorage({
+			key:key,
+			data:value,
+			success:()=>{
+				resolve();
+			},
+			fail:(err)=>{
+				reject(err);
+			}
+		});
+	});
 }
 
 /**
@@ -195,19 +178,19 @@ function setStorage(key,value) {
  *
  * @param {String} key 保存的key
  */
- function getStorage(key) {
-   return new Promise((resolve,reject)=>{
-     wx.getStorage({
-       key:key,
-       success:(res)=>{
-         resolve(res.data)
-       },
-       fail:()=>{
-         reject()
-       }
-     })
-   })
- }
+function getStorage(key) {
+	return new Promise((resolve,reject)=>{
+		wx.getStorage({
+			key:key,
+			success:(res)=>{
+				resolve(res.data);
+			},
+			fail:()=>{
+				reject();
+			}
+		});
+	});
+}
 
 /**
  * [打电话]
@@ -215,9 +198,9 @@ function setStorage(key,value) {
  * @param {String} phoneNumber 电话号码
  */
 function phoneCall(phoneNumber) {
-  wx.makePhoneCall({
-     phoneNumber: phoneNumber
-   })
+	wx.makePhoneCall({
+		phoneNumber: phoneNumber
+	});
 }
 
 /**
@@ -226,32 +209,60 @@ function phoneCall(phoneNumber) {
  * @param {String} data 复制的内容
  * @param {String} tip 提示信息
  */
- function copy(data,tip){
-   wx.setClipboardData({
-     data: data,
-     success: function(res) {
-       wx.getClipboardData({
-         success: function(res) {
-           toast(tip)
-         }
-       })
-     }
-   })
- }
+function copy(data,tip){
+	wx.setClipboardData({
+		data: data,
+		success: function(res) {
+			wx.getClipboardData({
+				success: function(res) {
+					toast(tip);
+				}
+			});
+		}
+	});
+}
+
+
+/**
+ * [深拷贝]
+ *
+ * @param  {Object} data 需要拷贝的数据
+ * @return {Object}      返回拷贝后的数据
+ */
+function deepCopy(data) {
+	if (Object.prototype.toString.call(data) === "[object Array]"){
+		return data.map(((item) => {
+			if (Object.prototype.toString.call(item) === "[object Array]" || Object.prototype.toString.call(item) === "[object Object]") {
+				return deepCopy(item);
+			}
+			return item;
+		}));
+	} else if (Object.prototype.toString.call(data) === "[object Object]") {
+		let newData = {};
+		for (let i in data) {
+			if (Object.prototype.toString.call(data[i]) === "[object Array]" || Object.prototype.toString.call(data[i]) === "[object Object]") {
+				newData[i] = deepCopy(data[i]);
+			} else {
+				newData[i] = data[i];
+			}
+		}
+		return newData;
+	}
+}
 
 module.exports = {
-  isArray: isArray,
-  isObject:isObject,
-  trim:trim,
-  getQueryString:getQueryString,
-  isObjEmpty:isObjEmpty,
-  isPhoneNum:isPhoneNum,
-  interArray:interArray,
-  nowDate:nowDate,
-  modal:modal,
-  toast:toast,
-  setStorage:setStorage,
-  getStorage:getStorage,
-  phoneCall:phoneCall,
-  copy:copy
+	isArray: isArray,
+	isObject: isObject,
+	trim: trim,
+	isObjEmpty: isObjEmpty,
+	sPhoneNum: isPhoneNum,
+	interArray: interArray,
+	nowDate: nowDate,
+	modal: modal,
+	toast: toast,
+	setStorage: setStorage,
+	getStorage: getStorage,
+	phoneCall: phoneCall,
+	copy: copy,
+	deepCopy: deepCopy
 };
