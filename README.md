@@ -8,11 +8,11 @@
 ---
 ## Getting Started
 
-#### install
+### install
 ```
 npm install xcxutil
 ```
-#### use  
+### use  
 ```
 let xcxutil = require("xcxutil");
 
@@ -21,7 +21,7 @@ xcxutil.isArray([1,2,3]); //true
 xcxutil.copy('这是一段文字','复制成功啦')
 
 ```
-#### api
+### api
 
 |api | 用途 | 实例
 |:----:|:----:|:---:|
