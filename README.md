@@ -23,15 +23,8 @@ xcxutil.copy('这是一段文字','复制成功啦')
 ```
 #### api
 
-| 姓名 | 性别 | 地址
+|api | 用途 | 实例
 |:----:|:----:|:---:|
-| 张三 | 男 | 北京
-| 李四 | 增加宽度效果明显 | 乌兹别克斯坦
-| 伊丽莎白 | 女 | 英国
-
-
-api | 用途 | 实例
----|---|---
 isArray |  是否为数组 | ```xcxutil.isArray([1,2,4])```
 isObject| 是否为对象| ```xcxutil.isObject({})```
 trim | 去掉空格|```xcxutil.trim(" xx ")```
@@ -45,4 +38,5 @@ getStorage|获取localStorage|```xcxutil.getStorage("token").then((data)=>{//use
 phoneCall | 打电话  |```xcxutil.phoneCall('13411111111')```
 copy|复制文本 | ```xcxutil.copy('文本','提示')```
 deepCopy|深拷贝 | ```xcxutil.deepCopy(obj)```
+
 * 👀 持续更新 欢迎[fork & star](https://github.com/leinov/xcxutil)
