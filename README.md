@@ -24,7 +24,7 @@ xcxutil.copy('这是一段文字','复制成功啦')
 ### api
 
 |api | 用途 | 实例
-|:----:|:----:|:---:|
+|:----|:----|:---|
 isArray |  是否为数组 | ```xcxutil.isArray([1,2,4])```
 isObject| 是否为对象| ```xcxutil.isObject({})```
 trim | 去掉空格|```xcxutil.trim(" xx ")```
